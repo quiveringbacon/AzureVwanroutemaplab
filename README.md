@@ -5,7 +5,7 @@ This creates a vwan and a couple of spoke vnets with VM's connected to the vhub 
 The topology will look like this:
 ![wvanlabwithS2Sandroutemaps](https://github.com/quiveringbacon/AzureVwanroutemaplab/assets/128983862/5f119e85-e907-477e-9ded-16d1cd06f503)
 
-You can run Terraform right from the Azure cloud shell by cloning this git repository with "git clone https://github.com/quiveringbacon/AzureVwanroutemap.git ./terraform".
+You can run Terraform right from the Azure cloud shell by cloning this git repository with "git clone https://github.com/quiveringbacon/AzureVwanroutemaplab.git ./terraform".
 
 Then, "cd terraform" then, "terraform init" and finally "terraform apply -auto-approve" to deploy.
 
