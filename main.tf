@@ -255,6 +255,16 @@ resource "azurerm_vpn_gateway_connection" "onpremconnection" {
     name             = "onpremlink"
     shared_key       = "vpn123"
     vpn_site_link_id = azurerm_vpn_site.onprem.link[0].id
+    ipsec_policy {
+      dh_group = "DHGroup14"
+      ike_encryption_algorithm = "AES256"
+      ike_integrity_algorithm = "SHA256"
+      encryption_algorithm = "AES256"
+      integrity_algorithm = "SHA256"
+      pfs_group = "None"
+      sa_data_size_kb = "0"
+      sa_lifetime_sec = "27000"
+    }
   }
   
   routing {
@@ -970,14 +980,14 @@ crypto ikev2 enable management
 
 crypto ikev2 policy 50
  encryption aes-256
- integrity sha
- group 2
- prf sha
+ integrity sha256
+ group 14
+ prf sha256
  lifetime seconds 86400
 
 crypto ipsec ikev2 ipsec-proposal vpn
  protocol esp encryption aes-256
- protocol esp integrity sha-1
+ protocol esp integrity sha256
 crypto ipsec profile vpn-profile
  set ikev2 ipsec-proposal vpn
 
