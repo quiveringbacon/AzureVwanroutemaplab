@@ -242,7 +242,7 @@ resource "azurerm_vpn_site" "onprem" {
     provider_name = "Azure"
     speed_in_mbps = 10    
     bgp {
-      asn             = 65002      
+      asn             = 64444      
       peering_address = "172.16.1.1"
     }
   }
@@ -323,7 +323,7 @@ resource "azurerm_route_map" "routemap2" {
       type = "Add"
 
       parameter {
-        as_path = ["65010"]
+        as_path = ["64222"]
       }
     }
 
@@ -1015,7 +1015,7 @@ tunnel-group ${data.azurerm_vpn_gateway.hubpip.bgp_settings[0].instance_0_bgp_pe
  ikev2 remote-authentication pre-shared-key vpn123
  ikev2 local-authentication pre-shared-key vpn123
 
-router bgp 65002
+router bgp 64444
  bgp log-neighbor-changes
  address-family ipv4 unicast
  neighbor ${data.azurerm_vpn_gateway.hubpip.bgp_settings[0].instance_0_bgp_peering_address[0].default_ips[0]} remote-as 65515
